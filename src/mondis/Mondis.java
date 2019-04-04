@@ -485,135 +485,6 @@ public final class Mondis {
     // @@protoc_insertion_point(enum_scope:mondis.CommandType)
   }
 
-  /**
-   * <pre>
-   *发送给谁
-   * </pre>
-   *
-   * Protobuf enum {@code mondis.SendToType}
-   */
-  public enum SendToType
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>ALL_CLIENTS = 0;</code>
-     */
-    ALL_CLIENTS(0),
-    /**
-     * <code>ALL_PEERS = 1;</code>
-     */
-    ALL_PEERS(1),
-    /**
-     * <code>SPECIFY_CLIENT = 2;</code>
-     */
-    SPECIFY_CLIENT(2),
-    /**
-     * <code>SPECIFY_PEER = 3;</code>
-     */
-    SPECIFY_PEER(3),
-    /**
-     * <code>NO_ONE = 4;</code>
-     */
-    NO_ONE(4),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>ALL_CLIENTS = 0;</code>
-     */
-    public static final int ALL_CLIENTS_VALUE = 0;
-    /**
-     * <code>ALL_PEERS = 1;</code>
-     */
-    public static final int ALL_PEERS_VALUE = 1;
-    /**
-     * <code>SPECIFY_CLIENT = 2;</code>
-     */
-    public static final int SPECIFY_CLIENT_VALUE = 2;
-    /**
-     * <code>SPECIFY_PEER = 3;</code>
-     */
-    public static final int SPECIFY_PEER_VALUE = 3;
-    /**
-     * <code>NO_ONE = 4;</code>
-     */
-    public static final int NO_ONE_VALUE = 4;
-
-
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static SendToType valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static SendToType forNumber(int value) {
-      switch (value) {
-        case 0: return ALL_CLIENTS;
-        case 1: return ALL_PEERS;
-        case 2: return SPECIFY_CLIENT;
-        case 3: return SPECIFY_PEER;
-        case 4: return NO_ONE;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<SendToType>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        SendToType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<SendToType>() {
-            public SendToType findValueByNumber(int number) {
-              return SendToType.forNumber(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(ordinal());
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return mondis.Mondis.getDescriptor().getEnumTypes().get(4);
-    }
-
-    private static final SendToType[] VALUES = values();
-
-    public static SendToType valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int value;
-
-    private SendToType(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:mondis.SendToType)
-  }
-
   public interface MessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:mondis.Message)
       com.google.protobuf.MessageOrBuilder {
@@ -703,28 +574,6 @@ public final class Mondis {
      * <code>.mondis.CommandType command_type = 5;</code>
      */
     mondis.Mondis.CommandType getCommandType();
-
-    /**
-     * <pre>
-     *发给谁
-     * </pre>
-     *
-     * <code>.mondis.SendToType send_to_type = 6;</code>
-     */
-    int getSendToTypeValue();
-    /**
-     * <pre>
-     *发给谁
-     * </pre>
-     *
-     * <code>.mondis.SendToType send_to_type = 6;</code>
-     */
-    mondis.Mondis.SendToType getSendToType();
-
-    /**
-     * <code>uint32 client_id = 7;</code>
-     */
-    int getClientId();
   }
   /**
    * Protobuf type {@code mondis.Message}
@@ -744,7 +593,6 @@ public final class Mondis {
       resType_ = 0;
       dataType_ = 0;
       commandType_ = 0;
-      sendToType_ = 0;
     }
 
     @java.lang.Override
@@ -799,17 +647,6 @@ public final class Mondis {
               int rawValue = input.readEnum();
 
               commandType_ = rawValue;
-              break;
-            }
-            case 48: {
-              int rawValue = input.readEnum();
-
-              sendToType_ = rawValue;
-              break;
-            }
-            case 56: {
-
-              clientId_ = input.readUInt32();
               break;
             }
             default: {
@@ -986,40 +823,6 @@ public final class Mondis {
       return result == null ? mondis.Mondis.CommandType.UNRECOGNIZED : result;
     }
 
-    public static final int SEND_TO_TYPE_FIELD_NUMBER = 6;
-    private int sendToType_;
-    /**
-     * <pre>
-     *发给谁
-     * </pre>
-     *
-     * <code>.mondis.SendToType send_to_type = 6;</code>
-     */
-    public int getSendToTypeValue() {
-      return sendToType_;
-    }
-    /**
-     * <pre>
-     *发给谁
-     * </pre>
-     *
-     * <code>.mondis.SendToType send_to_type = 6;</code>
-     */
-    public mondis.Mondis.SendToType getSendToType() {
-      @SuppressWarnings("deprecation")
-      mondis.Mondis.SendToType result = mondis.Mondis.SendToType.valueOf(sendToType_);
-      return result == null ? mondis.Mondis.SendToType.UNRECOGNIZED : result;
-    }
-
-    public static final int CLIENT_ID_FIELD_NUMBER = 7;
-    private int clientId_;
-    /**
-     * <code>uint32 client_id = 7;</code>
-     */
-    public int getClientId() {
-      return clientId_;
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1049,12 +852,6 @@ public final class Mondis {
       if (commandType_ != mondis.Mondis.CommandType.CLIENT_COMMAND.getNumber()) {
         output.writeEnum(5, commandType_);
       }
-      if (sendToType_ != mondis.Mondis.SendToType.ALL_CLIENTS.getNumber()) {
-        output.writeEnum(6, sendToType_);
-      }
-      if (clientId_ != 0) {
-        output.writeUInt32(7, clientId_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -1083,14 +880,6 @@ public final class Mondis {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(5, commandType_);
       }
-      if (sendToType_ != mondis.Mondis.SendToType.ALL_CLIENTS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(6, sendToType_);
-      }
-      if (clientId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(7, clientId_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1112,9 +901,6 @@ public final class Mondis {
       if (resType_ != other.resType_) return false;
       if (dataType_ != other.dataType_) return false;
       if (commandType_ != other.commandType_) return false;
-      if (sendToType_ != other.sendToType_) return false;
-      if (getClientId()
-          != other.getClientId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1136,10 +922,6 @@ public final class Mondis {
       hash = (53 * hash) + dataType_;
       hash = (37 * hash) + COMMAND_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + commandType_;
-      hash = (37 * hash) + SEND_TO_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + sendToType_;
-      hash = (37 * hash) + CLIENT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getClientId();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1283,10 +1065,6 @@ public final class Mondis {
 
         commandType_ = 0;
 
-        sendToType_ = 0;
-
-        clientId_ = 0;
-
         return this;
       }
 
@@ -1318,8 +1096,6 @@ public final class Mondis {
         result.resType_ = resType_;
         result.dataType_ = dataType_;
         result.commandType_ = commandType_;
-        result.sendToType_ = sendToType_;
-        result.clientId_ = clientId_;
         onBuilt();
         return result;
       }
@@ -1383,12 +1159,6 @@ public final class Mondis {
         }
         if (other.commandType_ != 0) {
           setCommandTypeValue(other.getCommandTypeValue());
-        }
-        if (other.sendToType_ != 0) {
-          setSendToTypeValue(other.getSendToTypeValue());
-        }
-        if (other.getClientId() != 0) {
-          setClientId(other.getClientId());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1767,97 +1537,6 @@ public final class Mondis {
         onChanged();
         return this;
       }
-
-      private int sendToType_ = 0;
-      /**
-       * <pre>
-       *发给谁
-       * </pre>
-       *
-       * <code>.mondis.SendToType send_to_type = 6;</code>
-       */
-      public int getSendToTypeValue() {
-        return sendToType_;
-      }
-      /**
-       * <pre>
-       *发给谁
-       * </pre>
-       *
-       * <code>.mondis.SendToType send_to_type = 6;</code>
-       */
-      public Builder setSendToTypeValue(int value) {
-        sendToType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *发给谁
-       * </pre>
-       *
-       * <code>.mondis.SendToType send_to_type = 6;</code>
-       */
-      public mondis.Mondis.SendToType getSendToType() {
-        @SuppressWarnings("deprecation")
-        mondis.Mondis.SendToType result = mondis.Mondis.SendToType.valueOf(sendToType_);
-        return result == null ? mondis.Mondis.SendToType.UNRECOGNIZED : result;
-      }
-      /**
-       * <pre>
-       *发给谁
-       * </pre>
-       *
-       * <code>.mondis.SendToType send_to_type = 6;</code>
-       */
-      public Builder setSendToType(mondis.Mondis.SendToType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        sendToType_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *发给谁
-       * </pre>
-       *
-       * <code>.mondis.SendToType send_to_type = 6;</code>
-       */
-      public Builder clearSendToType() {
-        
-        sendToType_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int clientId_ ;
-      /**
-       * <code>uint32 client_id = 7;</code>
-       */
-      public int getClientId() {
-        return clientId_;
-      }
-      /**
-       * <code>uint32 client_id = 7;</code>
-       */
-      public Builder setClientId(int value) {
-        
-        clientId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint32 client_id = 7;</code>
-       */
-      public Builder clearClientId() {
-        
-        clientId_ = 0;
-        onChanged();
-        return this;
-      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1925,23 +1604,19 @@ public final class Mondis {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014mondis.proto\022\006mondis\"\361\001\n\007Message\022!\n\010ms" +
+      "\n\014mondis.proto\022\006mondis\"\264\001\n\007Message\022!\n\010ms" +
       "g_type\030\001 \001(\0162\017.mondis.MsgType\022\017\n\007content" +
       "\030\002 \001(\t\022%\n\010res_type\030\003 \001(\0162\023.mondis.ExecRe" +
       "sType\022#\n\tdata_type\030\004 \001(\0162\020.mondis.DataTy" +
       "pe\022)\n\014command_type\030\005 \001(\0162\023.mondis.Comman" +
-      "dType\022(\n\014send_to_type\030\006 \001(\0162\022.mondis.Sen" +
-      "dToType\022\021\n\tclient_id\030\007 \001(\r*L\n\013ExecResTyp" +
-      "e\022\006\n\002OK\020\000\022\020\n\014SYNTAX_ERROR\020\001\022\022\n\016INTERNAL_" +
-      "ERROR\020\002\022\017\n\013LOGIC_ERROR\020\003*.\n\007MsgType\022\010\n\004D" +
-      "ATA\020\000\022\013\n\007COMMAND\020\001\022\014\n\010EXEC_RES\020\002*:\n\010Data" +
-      "Type\022\r\n\tSYNC_DATA\020\000\022\017\n\013CONTROL_MSG\020\001\022\016\n\n" +
-      "HEART_BEAT\020\002*m\n\013CommandType\022\022\n\016CLIENT_CO" +
-      "MMAND\020\000\022\022\n\016MASTER_COMMAND\020\001\022\020\n\014PEER_COMM" +
-      "AND\020\002\022\021\n\rSLAVE_FORWARD\020\003\022\021\n\rTIMER_COMMAN" +
-      "D\020\004*^\n\nSendToType\022\017\n\013ALL_CLIENTS\020\000\022\r\n\tAL" +
-      "L_PEERS\020\001\022\022\n\016SPECIFY_CLIENT\020\002\022\020\n\014SPECIFY" +
-      "_PEER\020\003\022\n\n\006NO_ONE\020\004b\006proto3"
+      "dType*L\n\013ExecResType\022\006\n\002OK\020\000\022\020\n\014SYNTAX_E" +
+      "RROR\020\001\022\022\n\016INTERNAL_ERROR\020\002\022\017\n\013LOGIC_ERRO" +
+      "R\020\003*.\n\007MsgType\022\010\n\004DATA\020\000\022\013\n\007COMMAND\020\001\022\014\n" +
+      "\010EXEC_RES\020\002*:\n\010DataType\022\r\n\tSYNC_DATA\020\000\022\017" +
+      "\n\013CONTROL_MSG\020\001\022\016\n\nHEART_BEAT\020\002*m\n\013Comma" +
+      "ndType\022\022\n\016CLIENT_COMMAND\020\000\022\022\n\016MASTER_COM" +
+      "MAND\020\001\022\020\n\014PEER_COMMAND\020\002\022\021\n\rSLAVE_FORWAR" +
+      "D\020\003\022\021\n\rTIMER_COMMAND\020\004b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1960,7 +1635,7 @@ public final class Mondis {
     internal_static_mondis_Message_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mondis_Message_descriptor,
-        new java.lang.String[] { "MsgType", "Content", "ResType", "DataType", "CommandType", "SendToType", "ClientId", });
+        new java.lang.String[] { "MsgType", "Content", "ResType", "DataType", "CommandType", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
