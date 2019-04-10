@@ -122,7 +122,7 @@ public class SimpleClient {
             Mondis.Message.Builder mb = Mondis.Message.newBuilder();
             mb.setMsgType(Mondis.MsgType.COMMAND);
             mb.setCommandType(Mondis.CommandType.CLIENT_COMMAND);
-            mb.setContent("NEW_CLIENT");
+            mb.setContent("MY_IDENTITY client");
             writeMessage(mb.build());
             Scanner scanner = new Scanner(System.in);
             new Thread(){
@@ -139,7 +139,7 @@ public class SimpleClient {
                                     Mondis.Message message = null;
                                     while ((message = nextMessage()) != null) {
                                         if (message.getMsgType() == Mondis.MsgType.EXEC_RES) {
-                                            System.out.println(message.getContent());
+                                            //System.out.println(message.getContent());
                                         }
                                     }
                                 }
@@ -150,14 +150,28 @@ public class SimpleClient {
                     }
                 }
             }.start();
-            while (true) {
-                System.out.println("Mondis>");
-                Mondis.Message.Builder builder = Mondis.Message.newBuilder();
-                builder.setMsgType(Mondis.MsgType.COMMAND);
-                builder.setCommandType(Mondis.CommandType.CLIENT_COMMAND);
-                builder.setContent(scanner.nextLine());
-                writeMessage(builder.build());
+            long totalTime = 0;
+            int testNum = 10;
+            for (int k = 0; k <testNum; k++) {
+                long start = System.currentTimeMillis();
+                for (int i = 0; i < 10000; i++) {
+                    Mondis.Message.Builder builder = Mondis.Message.newBuilder();
+                    builder.setMsgType(Mondis.MsgType.COMMAND);
+                    builder.setCommandType(Mondis.CommandType.CLIENT_COMMAND);
+                    builder.setContent("SET hello" + k+String.valueOf(i)+ " \"\"world" + k +String.valueOf(i)+"\"\"");
+                    writeMessage(builder.build());
+                }
+                long end = System.currentTimeMillis();
+                long curTime = end-start;
+                System.out.println("第"+(k+1)+"次 Time: " + curTime + "ms");
+                totalTime+=curTime;
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+
+                }
             }
+            System.out.println(testNum+"次平均："+totalTime/testNum+"ms");
         }
         catch (IOException e) {
             e.printStackTrace();
